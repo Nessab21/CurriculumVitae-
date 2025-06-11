@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanessa Buitrago Lora - Analista de Datos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.15);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #c084fc 100%);
+            color: white;
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="white" opacity="0.1"/><circle cx="80" cy="80" r="1" fill="white" opacity="0.1"/><circle cx="60" cy="40" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+        }
+
+        .header-content {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 40px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .photo-placeholder {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-info h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header-info .title {
+            font-size: 1.3em;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            text-align: right;
+        }
+
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .contact-info i {
+            margin-left: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 50px 40px;
+        }
+
+        .left-column {
+            padding-right: 20px;
+        }
+
+        .right-column {
+            padding-left: 20px;
+            border-left: 2px solid #e5e7eb;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: #7c3aed;
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e5e7eb;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, #7c3aed, #a855f7);
+        }
+
+        .professional-summary {
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #7c3aed;
+            font-size: 1.05em;
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+
+        .job {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: #fafafa;
+            border-radius: 12px;
+            border-left: 4px solid #a855f7;
+            transition: all 0.3s ease;
+        }
+
+        .job:hover {
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .job-title {
+            font-weight: 600;
+            font-size: 1.1em;
+            color: #7c3aed;
+            margin-bottom: 5px;
+        }
+
+        .company {
+            font-weight: 500;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .period {
+            background: #7c3aed;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        .job-description ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .job-description li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .job-description li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #a855f7;
+            font-size: 0.8em;
+        }
+
+        .skills-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .skill-category h3 {
+            color: #7c3aed;
+            font-size: 1em;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        .education-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .education-item h3 {
+            color: #7c3aed;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .education-item .institution {
+            color: #666;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .education-item .year {
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        .project {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .project h3 {
+            color: #7c3aed;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .project p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .achievement {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #f59e0b;
+            margin-bottom: 20px;
+        }
+
+        .achievement h3 {
+            color: #d97706;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .contact-info {
+                text-align: center;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 30px 20px;
+            }
+
+            .right-column {
+                border-left: none;
+                border-top: 2px solid #e5e7eb;
+                padding-left: 0;
+                padding-top: 20px;
+            }
+
+            .header {
+                padding: 40px 20px;
+            }
+
+            .job-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">            <div class="header-content">                <img src="IMG_5906.jpg" alt="Vanessa Buitrago Lora" style="width: 160px; height: 160px; border-radius: 50%; border: 4px solid rgba(255, 255, 255, 0.3); object-fit: cover; object-position: center 15%;">
+                
+                <div class="header-info">
+                    <h1>Vanessa Buitrago Lora</h1>
+                    <div class="title">BIÓLOGA • ANALISTA DE DATOS</div>
+                </div>
+                
+                <div class="contact-info">
+                    <div>vanessa.buitragol@udea.edu.co <i class="fas fa-envelope"></i></div>
+                    <div>+57 302 351 6068 <i class="fas fa-phone"></i></div>
+                    <div>Calle 45 # 22 A 39 <i class="fas fa-map-marker-alt"></i></div>
+                    <div>Medellín, Colombia <i class="fas fa-globe"></i></div>
+                    <div>21 Diciembre, 1993 <i class="fas fa-calendar"></i></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="left-column">
+                <section class="section">
+                    <div class="professional-summary">
+                        <strong>Bióloga graduada de la Universidad de Antioquia</strong> con sólida formación científica y 2 años de experiencia en desarrollo de software. Especializada en análisis de datos con dominio de Python y R para limpieza, visualización y modelado estadístico aplicado a problemas reales. Experiencia en manejo de datos en la nube (AWS), técnicas de biología molecular y investigación cuantitativa. Combino rigor científico con habilidades técnicas para transformar datos complejos en insights accionables. Docente con 1.5 años de experiencia transmitiendo conocimientos técnicos de manera clara y efectiva.
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2><i class="fas fa-briefcase"></i> Experiencia Profesional</h2>
+                    
+                    <div class="job">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">DESARROLLADORA DE SOFTWARE</div>
+                                <div class="company">Independiente</div>
+                            </div>
+                            <div class="period">2022 - 2024</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Desarrollo de aplicaciones básicas utilizando Python para automatización de procesos</li>
+                                <li>Implementación de soluciones de almacenamiento y procesamiento de datos en AWS</li>
+                                <li>Tratamiento y análisis de datasets complejos usando Python (Pandas, NumPy, Matplotlib)</li>
+                                <li>Desarrollo de pipelines de datos para limpieza, transformación y análisis</li>
+                                <li>Creación de modelos matemáticos y estadísticos para resolver problemas reales</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">PROFESORA PREUNIVERSITARIA</div>
+                                <div class="company">Preuniversitario Formarte - Medellín</div>
+                            </div>
+                            <div class="period">Ene 2024 - Actual</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Enseñanza de materias científicas: Química, Biología, Genética, Bioquímica y Embriología</li>
+                                <li>Desarrollo de metodologías innovadoras para explicar conceptos complejos</li>
+                                <li>Análisis del progreso académico estudiantil mediante evaluación de datos</li>
+                                <li>Creación de material didáctico utilizando herramientas digitales</li>
+                                <li>Implementación de estrategias innovadoras y recursos audiovisuales</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">INVESTIGADORA - ANÁLISIS DE DATOS BIOLÓGICOS</div>
+                                <div class="company">Universidad de Antioquia</div>
+                            </div>
+                            <div class="period">2018 - 2024</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Análisis estadístico de datos de enfermedades infecciosas en aves usando R Project</li>
+                                <li>Procesamiento de datos moleculares (PCR, extracción de ADN)</li>
+                                <li>Elaboración de informes técnicos y visualización de resultados de investigación</li>
+                                <li>Manejo de bases de datos complejas y análisis morfológico mediante microscopia</li>
+                                <li>Participación activa en grupos de investigación en ecología y evolución de vertebrados</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">INSTRUCTORA UNIVERSIDAD DE ANTIOQUIA</div>
+                                <div class="company">Universidad de Antioquia</div>
+                            </div>
+                            <div class="period">2018 - 2019</div>
+                        </div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Preparación y dictado de actividades físicas y teóricas para rugby subacuático</li>
+                                <li>Entrenamiento en técnicas de flotación y manejo controlado del cuerpo en medio acuático</li>
+                                <li>Desarrollo de habilidades de trabajo en equipo y disciplina deportiva</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2><i class="fas fa-project-diagram"></i> Proyectos Destacados</h2>
+                    
+                    <div class="project">
+                        <h3>Análisis de Datos de Malaria Aviar</h3>
+                        <p>Procesamiento y análisis de datos moleculares usando R. Desarrollo de modelos predictivos para diagnóstico primario. Visualización de patrones epidemiológicos y elaboración de reportes técnicos.</p>
+                    </div>
+
+                    <div class="project">
+                        <h3>Desarrollo de Pipeline de Datos en AWS</h3>
+                        <p>Implementación de soluciones de almacenamiento en la nube. Automatización de procesos de limpieza y transformación de datos. Análisis de datasets complejos utilizando Python.</p>
+                    </div>
+                </section>
+            </div>
+
+            <div class="right-column">
+                <section class="section">
+                    <h2><i class="fas fa-cogs"></i> Habilidades Técnicas</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3>Lenguajes de Programación</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">R</span>
+                                <span class="skill-tag">SQL</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3>Librerías Python</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Pandas</span>
+                                <span class="skill-tag">NumPy</span>
+                                <span class="skill-tag">Matplotlib</span>
+                                <span class="skill-tag">Seaborn</span>
+                                <span class="skill-tag">Scikit-learn</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3>Análisis de Datos</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Limpieza de Datos</span>
+                                <span class="skill-tag">Visualización</span>
+                                <span class="skill-tag">Modelado Estadístico</span>
+                                <span class="skill-tag">Análisis Predictivo</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3>Tecnologías Cloud</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">AWS</span>
+                                <span class="skill-tag">Almacenamiento de Datos</span>
+                                <span class="skill-tag">Procesamiento en la Nube</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3>Herramientas</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Excel Avanzado</span>
+                                <span class="skill-tag">Bases de Datos</span>
+                                <span class="skill-tag">Git</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3>Metodologías Científicas</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Diseño Experimental</span>
+                                <span class="skill-tag">Biología Molecular</span>
+                                <span class="skill-tag">Análisis Cuantitativo</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2><i class="fas fa-graduation-cap"></i> Educación</h2>
+                    
+                    <div class="education-item">
+                        <h3>Pregrado en Biología</h3>
+                        <div class="institution">Universidad de Antioquia</div>
+                        <div class="year">Oct 2013 - Feb 2024</div>
+                    </div>
+
+                    <div class="education-item">
+                        <h3>Bachiller Académico</h3>
+                        <div class="institution">I.E. Gabriela Gómez Carvajal</div>
+                        <div class="year">Feb 2010 - Nov 2012</div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2><i class="fas fa-trophy"></i> Logros Destacados</h2>
+                    
+                    <div class="achievement">
+                        <h3><i class="fas fa-medal"></i> Campeona Mundial Rugby Subacuático</h3>
+                        <p>Medalla de oro representando a Colombia en el Mundial de Naciones 2023 en Montreal, Canadá. Seleccionada entre 75 deportistas nacionales para integrar el equipo de 15 atletas que logró el primer oro mundial para Colombia en este deporte.</p>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2><i class="fas fa-language"></i> Idiomas</h2>
+                    
+                    <div class="skill-category">
+                        <div class="skill-tags">
+                            <span class="skill-tag">Español (Nativo)</span>
+                            <span class="skill-tag">Inglés (Intermedio)</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2><i class="fas fa-user"></i> Habilidades Blandas</h2>
+                    
+                    <div class="skill-category">
+                        <div class="skill-tags">
+                            <span class="skill-tag">Comunicación Verbal</span>
+                            <span class="skill-tag">Empatía</span>
+                            <span class="skill-tag">Trabajo en Equipo</span>
+                            <span class="skill-tag">Responsabilidad</span>
+                            <span class="skill-tag">Adaptabilidad</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
