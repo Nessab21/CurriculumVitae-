@@ -1,2 +1,2 @@
 # CurriculumVitae-
-Plantilla profesional de CV 
+Plantilla profesional de CV diseñada específicamente para perfiles de Analista de Datos. Utiliza una paleta de colores púrpuras moderna, tipografía Inter y un diseño responsivo de dos columnas. Incluye secciones optimizadas para destacar habilidades técnicas, experiencia en programación, proyectos de datos y formación científica. Compatible con todos los navegadores y fácil conversión a PDF.
